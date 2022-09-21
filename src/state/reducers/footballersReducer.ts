@@ -1,23 +1,23 @@
 import { useSelector } from "react-redux"
 
 const initialState = {
-    dummyData: [],
+    footballers: [],
     loading: true
 }
 
-const dummyDataReducer = (state = initialState, action: any) => {
+const footballersReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case "getUsers":
             return {
                 ... state,
-                dummyData: action.payload,
+                footballersData: action.payload,
                 loading: false
             }
 
         case "createPlayer":
             return {
                 ... state,
-                data: action.payload,
+                footballers: action.payload,
                 loading: false
             }        
 
@@ -26,4 +26,4 @@ const dummyDataReducer = (state = initialState, action: any) => {
     }
 }
 
-export default dummyDataReducer;
+export default footballersReducer;

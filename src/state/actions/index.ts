@@ -1,2 +1,2 @@
 export * as actionCreators from "./accountActions";
-export * as dummyDataActionCreators from "./dummyDataActions";
+export * as footballerActionCreators from "./footballerActions";

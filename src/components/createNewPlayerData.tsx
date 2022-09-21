@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 // Import all actions and bind them
-import { createFootballPlayerProfile } from "../state/actions/dummyDataActions";
+import { createFootballPlayerProfile } from "../state/actions/footballerActions";
 
 const CreateNewPlayerProfileComponent: React.FC = ( ) => {
     const router = useRouter();
@@ -38,7 +38,7 @@ const CreateNewPlayerProfileComponent: React.FC = ( ) => {
         }
     }
 
-    const dataToBeFedToDummyAPI = {
+    const dataToBeFedToFootballersAPI = {
         name: name,
         age: age,
         team: team
@@ -47,7 +47,7 @@ const CreateNewPlayerProfileComponent: React.FC = ( ) => {
     const createNewPlayer = async (event: any) => {
         event.preventDefault()
 
-        await axios.post(`http://localhost:3000/api/footballers`, dataToBeFedToDummyAPI, config)
+        await axios.post(`http://localhost:3000/api/footballers`, dataToBeFedToFootballersAPI, config)
         .then((response) => {
             dispatch(createFootballPlayerProfile(response.data))
             console.log(response.data)

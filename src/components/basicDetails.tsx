@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // Import all actions and bind them
-import { getFootballersData } from "../state/actions/dummyDataActions";
+import { getFootballersData } from "../state/actions/footballerActions";
 
 import Loader from "./loader";
 
@@ -13,18 +13,12 @@ import Loader from "./loader";
 import { useRouter } from "next/router";
 
 const BasicDetails: React.FC = () => {
-    const [count, setCount] = useState(0);
+    const router = useRouter();
 
-    useEffect(() => {
-        setTimeout(() => {
-            setCount(count + 1);
-        },1000)
-    },[])
-
-    const footballersData = useSelector((state: any) => state?.dummyData?.dummyData);
+    const footballersData = useSelector((state: any) => state?.footballers?.footballersData);
     const dispatch = useDispatch();
 
-    const fetchUsers = async () => {
+    const fetchFootballers = async () => {
         await axios.get("http://localhost:3000/api/footballers")
         .then((res) => {
             dispatch(getFootballersData(res.data))
@@ -33,23 +27,29 @@ const BasicDetails: React.FC = () => {
     }
 
     useEffect(() => {
-        fetchUsers()
+        fetchFootballers()
     },[])
 
     console.log(footballersData);
  
     return (
         <>
+            <h1>Footballers:</h1>
+            <h5 onClick={() => router.push("/newplayer")}>
+                Add new players
+            </h5>
             {
                 (!footballersData && footballersData == undefined) ? 
-                    <Loader/>
+                    <>
+                        <Loader/>
+                    </>
                     :
-                    footballersData.map((individualData: any) => {
+                    footballersData.map((individualPlayerData: any) => {
                         return (
                             <>
-                                <h3>Name: {individualData.name}</h3>
-                                <h4>Age: {individualData.age}</h4>
-                                <h4>Team: {individualData.team}</h4>
+                                <h3>Name: {individualPlayerData.name}</h3>
+                                <h4>Age: {individualPlayerData.age}</h4>
+                                <h4>Team: {individualPlayerData.team}</h4>
                             </>
                         )
                     })  
