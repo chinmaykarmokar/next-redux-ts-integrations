@@ -17,9 +17,16 @@ const footballersReducer = (state = initialState, action: any) => {
         case "createPlayer":
             return {
                 ... state,
-                footballers: action.payload,
+                createFootballerData: action.payload,
                 loading: false
-            }        
+            } 
+            
+        case "updatePlayer": 
+            return {
+                ... state,
+                updatedData: action.payload,
+                loading: false
+            } 
 
         default: 
             return state    

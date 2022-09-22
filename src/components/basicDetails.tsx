@@ -31,6 +31,23 @@ const BasicDetails: React.FC = () => {
     },[])
 
     console.log(footballersData);
+
+    // Redirect to update page
+    const redirectToUpdatePage = (params: number) => {
+        console.log(params);
+        router.push({
+            pathname: "/updateplayer",
+            query: { id: params }
+        })
+    }
+
+    // Delete Footballer
+    const deleteFootballer = (params: any) => {
+        console.log(params);
+        axios.delete(`http://localhost:3000/api/footballers/${params}`)
+        console.log("Values deleted successfully");
+        router.reload();
+    }
  
     return (
         <>
@@ -46,10 +63,16 @@ const BasicDetails: React.FC = () => {
                     :
                     footballersData.map((individualPlayerData: any) => {
                         return (
-                            <>
+                            <>  
                                 <h3>Name: {individualPlayerData.name}</h3>
                                 <h4>Age: {individualPlayerData.age}</h4>
                                 <h4>Team: {individualPlayerData.team}</h4>
+                                <button onClick={() => {redirectToUpdatePage(individualPlayerData.id)}}>
+                                    Update
+                                </button>
+                                <button onClick={() => {deleteFootballer(individualPlayerData.id)}}>
+                                    Delete
+                                </button>
                             </>
                         )
                     })  

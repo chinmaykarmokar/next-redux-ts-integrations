@@ -11,3 +11,10 @@ export const createFootballPlayerProfile = (data: any) => {
         payload: data
     }
 }
+
+export const updateFootballerData = (updatedData: any) => {
+    return {
+        type: "updatePlayer",
+        payload: updatedData
+    }
+}
