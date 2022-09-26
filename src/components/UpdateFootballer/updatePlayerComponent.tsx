@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 // Import update action for footballers
-import { updateFootballerData } from "../state/actions/footballerActions";
+import { updateFootballerData } from "../../state/actions/footballerActions";
 
 // Import Axios
 import axios from "axios";

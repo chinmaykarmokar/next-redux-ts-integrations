@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 // Import all actions and bind them
-import { createFootballPlayerProfile } from "../state/actions/footballerActions";
+import { createFootballPlayerProfile } from "../../state/actions/footballerActions";
 
 const CreateNewPlayerProfileComponent: React.FC = ( ) => {
     const router = useRouter();

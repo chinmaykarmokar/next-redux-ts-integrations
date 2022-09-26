@@ -5,9 +5,9 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // Import all actions and bind them
-import { getFootballersData } from "../state/actions/footballerActions";
+import { getFootballersData } from "../../state/actions/footballerActions";
 
-import Loader from "./loader";
+import Loader from "../Loader/loader";
 
 // Add routing
 import { useRouter } from "next/router";
