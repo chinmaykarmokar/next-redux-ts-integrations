@@ -1,7 +1,7 @@
-export const getFootballersData = (userData: any) => {
+export const getFootballersData = (playerData: any) => {
     return {
         type: "getUsers",
-        payload: userData
+        payload: playerData
     }
 }
 
