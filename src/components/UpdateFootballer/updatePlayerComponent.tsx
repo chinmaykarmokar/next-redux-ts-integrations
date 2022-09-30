@@ -10,6 +10,12 @@ import { updateFootballerData } from "../../state/actions/footballerActions";
 // Import Axios
 import axios from "axios";
 
+// Import React-Bootstrap components
+import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+
+// Import styles
+import styles from "./UpdatePlayer.module.css";
+
 const UpdatePlayerComponent = () => {
     const dispatch = useDispatch();
     const router = useRouter();
@@ -18,6 +24,7 @@ const UpdatePlayerComponent = () => {
     const [age, setAge] = useState();
     const [team, setTeam] = useState();
     const [postValStatus, setPostValStatus] = useState(false);
+    // const [singlePlayer, setSinglePlayer] = useState();
 
     const changeNameHandler = (event: any) => {
         setName(event.target.value);
@@ -48,6 +55,22 @@ const UpdatePlayerComponent = () => {
             })
     }
 
+    // const getSingleFootballerData = async (parameter: any) => {
+    //     await axios.get(`http://localhost:3000/api/footballers/${parameter}}`)
+    //         .then((res) => {
+    //             console.log(res.data)
+    //             setSinglePlayer(res.data);
+    //         })
+    // }
+
+    // useEffect(() => {
+    //     if (router.isReady) {
+    //         getSingleFootballerData(router?.query?.id)
+    //     }
+    // },[router.isReady])
+
+    // console.log(singlePlayer);
+
     // useEffect(() => {
     //     console.log(router?.query?.id)
     // },[router.query])
@@ -58,23 +81,48 @@ const UpdatePlayerComponent = () => {
             (!postValStatus) 
             ?
             <> 
-                <h2>Update player with ID: {router?.query?.id}</h2>
-                <input
-                    onChange={changeNameHandler} 
-                    placeholder="Name"
-                />
-                <input
-                    onChange={changeAgeHandler} 
-                    placeholder="Age"
-                />
-                <input
-                    onChange={changeTeamHandler} 
-                    placeholder="Team"
-                />
-                <button onClick={updateFootballPlayerData}>Update</button>
+                <h2
+                    className={styles.mainHeader}
+                >
+                    Update player with ID: {router?.query?.id}
+                </h2>
+                <Container>
+                    <Row>
+                        <Col md={3}></Col>
+                        <Col md={6}>
+                            <Form.Control
+                                className={styles.formField}
+                                onChange={changeNameHandler} 
+                                placeholder="Name"
+                            />
+                            <Form.Control
+                                className={styles.formField}
+                                onChange={changeAgeHandler} 
+                                placeholder="Age"
+                            />
+                            <Form.Control
+                                className={styles.formField}
+                                onChange={changeTeamHandler} 
+                                placeholder="Team"
+                            />
+                            <Button
+                                className={styles.updateButton}
+                                onClick={updateFootballPlayerData}
+                            >
+                                Update
+                            </Button>
+                        </Col>
+                        <Col md={3}></Col>
+                    </Row>
+                </Container>
             </>
             :
-            <h2 onClick={() => {router.push("/")}}>Go to homepage</h2>
+            <h2 
+                className={styles.mainHeader}
+                onClick={() => {router.push("/")}}
+            >
+                Go to homepage
+            </h2>
         }
         </>
     )

@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.mainHeader {
+    font-family: "Ubuntu";
+    font-weight: bold;
+    text-align: center;
+    padding: 1%;
+    color: darkred;
+}
+
+.formBlock {
+    margin: 2%;
+}
+
+.formSubmitButton {
+    margin: 2%;
+}

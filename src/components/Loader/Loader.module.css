@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.mainLoaderContainer {
+    text-align: center;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.footballIcon {
+    font-size: 600%;
+    color: darkblue;
+}
+
+.loadingText {
+    margin-top: 2%;
+    font-family: "Ubuntu";
+    font-weight: bold;
+}

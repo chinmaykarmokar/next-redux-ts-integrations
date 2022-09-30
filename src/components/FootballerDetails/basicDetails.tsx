@@ -7,7 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 // Import all actions and bind them
 import { getFootballersData } from "../../state/actions/footballerActions";
 
+// Import Loader
 import Loader from "../Loader/loader";
+
+// Import React-Bootstrap Components
+import { Card, Button, Container, Row, Col } from "react-bootstrap";
+
+// Import CSS
+import styles from "./BasicDetailsStyles.module.css";
 
 // Add routing
 import { useRouter } from "next/router";
@@ -51,8 +58,11 @@ const BasicDetails: React.FC = () => {
  
     return (
         <>
-            <h1>Footballers:</h1>
-            <h5 onClick={() => router.push("/newplayer")}>
+            <h1 className={styles.mainHeader}>Footballers</h1>
+            <h5 
+                className={styles.newPlayerRoute}
+                onClick={() => router.push("/newplayer")}
+            >
                 Add new players
             </h5>
             {
@@ -64,15 +74,39 @@ const BasicDetails: React.FC = () => {
                     footballersData.map((individualPlayerData: any) => {
                         return (
                             <>  
-                                <h3>Name: {individualPlayerData.name}</h3>
-                                <h4>Age: {individualPlayerData.age}</h4>
-                                <h4>Team: {individualPlayerData.team}</h4>
-                                <button onClick={() => {redirectToUpdatePage(individualPlayerData.id)}}>
-                                    Update
-                                </button>
-                                <button onClick={() => {deleteFootballer(individualPlayerData.id)}}>
-                                    Delete
-                                </button>
+                                <Container>
+                                    <Row>
+                                        <Col md={2}></Col>
+                                        <Col md={8} className={styles.cardBlock}>
+                                            <Card className={styles.playerCard}>
+                                                <Card.Body>
+                                                    <Card.Title>
+                                                        Name: {individualPlayerData.name}
+                                                    </Card.Title>
+                                                    <Card.Text>
+                                                        Age: {individualPlayerData.age}    
+                                                    </Card.Text>
+                                                    <Card.Text>
+                                                        Team: {individualPlayerData.team}
+                                                    </Card.Text>
+                                                    <Button 
+                                                        onClick={() => {redirectToUpdatePage(individualPlayerData.id)}}
+                                                        className={styles.updateButton}
+                                                    >
+                                                        Update
+                                                    </Button>
+                                                    <Button 
+                                                        onClick={() => {deleteFootballer(individualPlayerData.id)}}
+                                                        className={styles.deleteButton}
+                                                    >
+                                                        Delete
+                                                    </Button>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                        <Col md={2}></Col>
+                                    </Row>
+                                </Container>
                             </>
                         )
                     })  

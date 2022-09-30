@@ -1,12 +1,18 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // Import hooks provided by react-redux
 import { useDispatch } from "react-redux";
 
 // Import all actions and bind them
 import { createFootballPlayerProfile } from "../../state/actions/footballerActions";
+
+// Import React-Bootstrap components
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+
+// Import styles
+import styles from "./NewPlayer.module.css";
 
 const CreateNewPlayerProfileComponent: React.FC = ( ) => {
     const router = useRouter();
@@ -61,14 +67,48 @@ const CreateNewPlayerProfileComponent: React.FC = ( ) => {
                 (!postValStatus) 
                 ?
                 <>
-                    <h1>Add new football player:</h1>
-                    <input onChange={handleNameChange} placeholder="Name"/>
-                    <input onChange={handleAgeChange} placeholder="Age"/>
-                    <input onChange={handleTeamChange} placeholder="Team"/> 
-                    <button onClick={createNewPlayer}>+</button>
+                    <h1
+                        className={styles.mainHeader}
+                    >
+                        Add new football player
+                    </h1>
+                    <Container>
+                        <Row>
+                            <Col md={3}></Col>
+                            <Col md={6}>
+                                <Form.Control
+                                    className={styles.formBlock} 
+                                    onChange={handleNameChange} 
+                                    placeholder="Name"
+                                />
+                                <Form.Control 
+                                    className={styles.formBlock}
+                                    onChange={handleAgeChange} 
+                                    placeholder="Age"
+                                />
+                                <Form.Control 
+                                    className={styles.formBlock}
+                                    onChange={handleTeamChange} 
+                                    placeholder="Team"
+                                /> 
+                                <Button 
+                                    className={styles.formSubmitButton}
+                                    onClick={createNewPlayer}
+                                >
+                                    Create
+                                </Button>
+                            </Col>
+                            <Col md={3}></Col>
+                        </Row>
+                    </Container>
                 </>
                 : 
-                <h2 onClick={() => {router.push("/")}}>Go to homepage</h2>
+                <h2 
+                    className={styles.mainHeader}
+                    onClick={() => {router.push("/")}}
+                >
+                    Go to homepage
+                </h2>
             }
         </>
     )

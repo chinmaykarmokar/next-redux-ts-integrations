@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.cardBlock {
+    padding: 1%;
+    font-family: "Abyssinica SIL";
+}
+
+.mainHeader {
+    text-align: center;
+    font-family: "Rubik Dirt";
+    padding: 1%;
+}
+
+.newPlayerRoute {
+    text-align: center;
+    color: darkred;
+    font-family: "Ubuntu";
+    font-weight: bold;
+}
+
+.newPlayerRoute:hover {
+    cursor: pointer;
+}
+
+.playerCard {
+    padding: 0.5%;
+    border: none;
+    box-shadow: 0 0 4px 1.5px rgba(0,0,0,0.2);
+}
+
+.updateButton {
+    margin: 1%;
+    font-family: "Ubuntu";
+    font-weight: bold;
+}
+
+.deleteButton {
+    margin: 1%;
+    font-family: "Ubuntu";
+    font-weight: bold;
+}
